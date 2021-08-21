@@ -74,3 +74,6 @@ server.addService(productsProto.ProductService.service, {
     }
   },
 });
+
+server.bind('', grpc.ServerCredentials.createInsecure());
+server.start();
