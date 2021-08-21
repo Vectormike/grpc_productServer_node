@@ -5,14 +5,14 @@ const protoLoader = require('@grpc/proto-loader');
 
 const { v4: uuidv4 } = require('uuid');
 
-const packageDefinistion = protoLoader.loadSync(PROTO_PATH, {
+const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
   longs: String,
   enums: String,
   arrays: true,
 });
 
-const productsProto = grpc.loadPackageDefinition(packageDefinistion);
+const productsProto = grpc.loadPackageDefinition(packageDefinition);
 
 const server = new grpc.Server();
 
@@ -75,5 +75,5 @@ server.addService(productsProto.ProductService.service, {
   },
 });
 
-server.bind('', grpc.ServerCredentials.createInsecure());
+server.bind('127.0.0.1:30043', grpc.ServerCredentials.createInsecure());
 server.start();
