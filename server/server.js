@@ -75,5 +75,5 @@ server.addService(productsProto.ProductService.service, {
   },
 });
 
-server.bind('localhost:30043', grpc.ServerCredentials.createInsecure());
+server.bind('localhost:3000', grpc.ServerCredentials.createInsecure());
 server.start();
