@@ -21,6 +21,22 @@ app.get('/', (req, res) => {
   });
 });
 
+// Add Products
+app.post('/add', (req, res) => {
+  const newProduct = {
+    id: req.body.product_id,
+    name: req.body.name,
+    price: req.body.price,
+    description: req.body.description,
+  };
+
+  client.insert(newProduct, (err, data) => {
+    if (err) throw err;
+    console.log('Product added', data);
+    res.redirect('/');
+  });
+});
+
 // Get specific Product
 app.post('/', (req, res) => {
   const getProduct = {
